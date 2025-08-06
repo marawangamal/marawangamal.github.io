@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Converter</title>
+</head>
+<body>
+    <h1>Favicon Converter</h1>
+    <p>Open browser console and run the conversion script</p>
+    
+    <div id="output"></div>
+    
+    <script>
+        // Function to convert SVG to PNG
+        function svgToPng(svgElement, size) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            const svgData = new XMLSerializer().serializeToString(svgElement);
+            const img = new Image();
+            
+            return new Promise((resolve) => {
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0, size, size);
+                    resolve(canvas.toDataURL('image/png'));
+                };
+                img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+            });
+        }
+        
+        // Load and convert favicons
+        async function convertFavicons() {
+            const sizes = [16, 32, 48, 180];
+            const svgFiles = ['images/favicon.svg', 'images/favicon-simple.svg'];
+            
+            for (const svgFile of svgFiles) {
+                const response = await fetch(svgFile);
+                const svgText = await response.text();
+                const parser = new DOMParser();
+                const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+                const svgElement = svgDoc.documentElement;
+                
+                for (const size of sizes) {
+                    const pngData = await svgToPng(svgElement, size);
+                    console.log(`${svgFile} ${size}x${size}:`, pngData);
+                    
+                    // Create download link
+                    const link = document.createElement('a');
+                    link.download = `favicon-${size}x${size}.png`;
+                    link.href = pngData;
+                    link.textContent = `Download ${size}x${size}`;
+                    document.getElementById('output').appendChild(link);
+                    document.getElementById('output').appendChild(document.createElement('br'));
+                }
+            }
+        }
+        
+        // Run conversion when page loads
+        window.onload = convertFavicons;
+    </script>
+</body>
+</html> 

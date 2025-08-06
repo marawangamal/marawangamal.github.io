@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4d9fff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="url(#grad2)"/>
+  
+  <!-- Text "MG" -->
+  <text x="16" y="22" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">MG</text>
+</svg> 
