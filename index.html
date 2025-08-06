@@ -276,7 +276,32 @@
     .play-text{font-size:14px;color:white;font-weight:500;}
     .video-link{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;}
     
- 
+    /* ===== Achievement Badges ===== */
+    .achievement-badge{
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+    .achievement-badge::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+      animation: shootingStar 4s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+    @keyframes shootingStar{
+      0%, 90% { left: -100%; opacity: 0; }
+      95% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
 
     /* ===== Responsive ===== */
     @media(max-width:700px){
@@ -446,7 +471,9 @@
       <div class="project">
         <div class="project-header">
           <a href="https://dekki.ai">Dekki</a>
-          <span class="project-tag">Statistical spaced repetition</span>
+          <div style="display: flex; gap: 8px;">
+            <span class="project-tag achievement-badge" style="background: #e8f5e8; color: #2d5a2d; border-color: #c3e6c3;">50k+ users</span>
+          </div>
         </div>
         <p class="project-desc">Collaborated with Dr. Luke Kyne and Prof. Oliver Hardt to create a machine-learning study tool for medical students. The algorithm models each student's retention curve using Ebbinghaus' forgetting theory, delivering optimised review schedules throughout med school.</p>
         <div class="project-preview">
@@ -471,7 +498,6 @@
       <div class="project">
         <div class="project-header">
           <a href="https://papers.app">Papers.app</a>
-          <span class="project-tag">Semantic search for ML papers</span>
         </div>
         <p class="project-desc">Created in collaboration with Jeremy Pinto to help researchers find papers by enabling semantic searching within specific conferences such as ICML, NeurIPS, and ICLR.</p>
         <div class="project-preview">
@@ -496,7 +522,9 @@
       <div class="project">
         <div class="project-header">
           <a href="https://www.youtube.com/watch?v=CpD9XlTu3ys&t=19s" target="_blank">YouTube</a>
-          <span class="project-tag">Singular Value Decomposition</span>
+          <div style="display: flex; gap: 8px;">
+            <span class="project-tag achievement-badge" style="background: #ffe8e8; color: #8b2635; border-color: #ffb3b3;">100k+ views</span>
+          </div>
         </div>
         <p class="project-desc">Creating an explanation of the Singular Value Decomposition (SVD) by animating key concepts from Gilbert Strang's MIT lecture. The video visualizes the geometric intuition behind SVD.</p>
         <div class="project-preview">
