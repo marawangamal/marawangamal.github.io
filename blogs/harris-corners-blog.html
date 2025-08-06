@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <!-- begin SEO -->
-  <title id="page-title">Blog Post - Marawan Gamal</title>
+  <title>Harris Corner Detection - Marawan Gamal</title>
   <meta property="og:locale" content="en-US" />
   <meta property="og:site_name" content="Marawan Gamal" />
-  <meta property="og:title" content="Blog Post" id="og-title" />
-  <link rel="canonical" href="https://marawangamal.github.io/blog-post.html" />
-  <meta property="og:url" content="https://marawangamal.github.io/blog-post.html" />
-  <meta property="og:description" content="Technical blog post by Marawan Gamal" id="page-description" />
-  <meta name="description" content="Technical blog post by Marawan Gamal" id="meta-description" />
-  <meta name="keywords" content="Marawan Gamal, Blog, Computer Science, Machine Learning" />
+  <meta property="og:title" content="Harris Corner Detection" />
+  <link rel="canonical" href="https://marawangamal.github.io/harris-corners-blog.html" />
+  <meta property="og:url" content="https://marawangamal.github.io/harris-corners-blog.html" />
+  <meta property="og:description" content="An in-depth exploration of the Harris corner detection algorithm, covering the mathematical foundations, implementation details, and practical applications in computer vision." />
+  <meta name="description" content="An in-depth exploration of the Harris corner detection algorithm, covering the mathematical foundations, implementation details, and practical applications in computer vision." />
+  <meta name="keywords" content="Marawan Gamal, Blog, Computer Vision, Corner Detection, Harris Algorithm" />
   <meta name="author" content="Marawan Gamal" />
   
   <!-- Open Graph / Facebook -->
@@ -22,8 +22,8 @@
   
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="Marawan Gamal - Blog Post" id="twitter-title" />
-  <meta property="twitter:description" content="Technical blog post by Marawan Gamal" id="twitter-description" />
+  <meta property="twitter:title" content="Harris Corner Detection - Marawan Gamal" />
+  <meta property="twitter:description" content="An in-depth exploration of the Harris corner detection algorithm, covering the mathematical foundations, implementation details, and practical applications in computer vision." />
   <meta property="twitter:image" content="https://marawangamal.github.io/images/profile.png" />
   
   <!-- end SEO -->
@@ -33,9 +33,9 @@
   <meta name="MobileOptimized" content="320" />
   
   <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="images/favicon-32x32.svg" />
-  <link rel="icon" type="image/png" href="images/favicon-32x32.png" />
-  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-32x32.svg" />
+  <link rel="icon" type="image/png" href="../images/favicon-32x32.png" />
+  <link rel="shortcut icon" href="../images/favicon.ico" />
   <meta name="theme-color" content="#0066cc" />
   
   <!-- Font loading optimization -->
@@ -57,11 +57,8 @@
     };
   </script>
   
-  <!-- Marked.js for markdown parsing -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  
   <style>
-    /* ===== Color theme pulled from user sample ===== */
+    /* ===== Color theme ===== */
     :root {
       --text: #1a1a1a;
       --text-light: #555;
@@ -311,27 +308,6 @@
     .blog-content .MathJax {
       font-size: 1.1rem !important;
     }
-    
-    /* Loading state */
-    .loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 400px;
-      color: var(--text-light);
-      font-size: 1.1rem;
-    }
-    
-    /* Error state */
-    .error {
-      background: #fee;
-      border: 1px solid #fcc;
-      border-radius: 8px;
-      padding: 2rem;
-      margin: 2rem 0;
-      text-align: center;
-      color: #c33;
-    }
 
     /* ===== Responsive ===== */
     @media(max-width:700px){
@@ -352,8 +328,8 @@
   <header>
     <nav aria-label="Main navigation">
       <ul>
-        <li><a href="index.html">About</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="../index.html">About</a></li>
+        <li><a href="../blog.html">Blog</a></li>
       </ul>
     </nav>
   </header>
@@ -361,7 +337,7 @@
   <div class="mobile-header">
     <div class="mobile-header-content">
       <div class="mobile-profile">
-        <img src="images/profile.png" alt="Marawan Gamal" class="mobile-avatar" />
+        <img src="../images/profile.png" alt="Marawan Gamal" class="mobile-avatar" />
         <div class="mobile-info">
           <h2>Marawan Gamal</h2>
           <p>PhD Computer Science • Mila / UdeM</p>
@@ -381,11 +357,11 @@
       <button class="mobile-menu-close" id="mobileMenuClose">×</button>
     </div>
     <nav class="mobile-menu-nav">
-      <a href="index.html">About</a>
-      <a href="index.html#publications">Publications</a>
-      <a href="index.html#projects">Special Projects</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="../index.html">About</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Special Projects</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../index.html#contact">Contact</a>
     </nav>
     <div class="mobile-menu-footer">
       <a href="https://www.linkedin.com/in/marawangamal">
@@ -395,7 +371,7 @@
       </a>
       <a href="https://github.com/marawangamal">
         <svg viewBox="0 0 24 24">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.30 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
       </a>
       <a href="https://scholar.google.com/citations?user=1O_Bb-gAAAAJ&hl=en">
@@ -408,7 +384,7 @@
   
   <aside>
     <div class="sidebar-header">
-      <img src="images/profile.png" alt="Marawan Gamal" class="avatar" />
+      <img src="../images/profile.png" alt="Marawan Gamal" class="avatar" />
       <h1>Marawan Gamal</h1>
       <p class="role">PhD Computer Science<br>Mila / UdeM</p>
       <div class="info">
@@ -416,11 +392,11 @@
       </div>
     </div>
     <nav class="sidebar-nav">
-      <a href="index.html">About</a>
-      <a href="index.html#publications">Publications</a>
-      <a href="index.html#projects">Special Projects</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="../index.html">About</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Special Projects</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../index.html#contact">Contact</a>
     </nav>
     <div class="sidebar-footer">
       <a href="https://www.linkedin.com/in/marawangamal">
@@ -442,15 +418,206 @@
   </aside>
 
   <main>
-    <a href="blog.html" class="back-link">
+    <a href="../blog.html" class="back-link">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M19 12H5M12 19l-7-7 7-7"/>
       </svg>
       Back to Blog
     </a>
     
-    <div id="blog-content">
-      <div class="loading">Loading blog post...</div>
+    <div class="blog-header">
+      <h1 class="blog-title">Harris Corner Detection</h1>
+      <div class="blog-meta">
+        <div class="blog-date">August 2020</div>
+      </div>
+    </div>
+    
+    <div class="blog-content">
+      <!-- <h1>Harris Corners</h1> -->
+
+      <h2>Problem Definition</h2>
+
+      <p>Our goal is to design a function whose shape will tell us whether a point in an image is a corner or not.</p>
+
+      <p>To begin designing this function let's first consider a particular point $\underline{P}$ and only look at a small window $W$ around that point. We want to design a function that will tell us whether our point is a good Keypoint (corner) or not.</p>
+
+      <p><em>[Image placeholder: Window around point P]</em></p>
+
+      <p>Suppose we take another window $W'$ that's centered at a different point $\underline{P}'$ that is very close to $\underline{P}$. That is if $\underline{P} = [x, y]^T$ then $\underline{P}' = [x+u, y+v]^T$ for some small $(u,v)$. Now if we compare the two windows by summing the square differences between corresponding pixels and find that the summation is <strong>large</strong> then this might lead us to thinking that $\underline{P}$ is a good keypoint.</p>
+
+      <p>Why? Because moving the window by just a little bit made a big difference which is essentially what a definition keypoint could be. That is a Keypoint could be defined as a region around point that is unique in an image and therefore comparing this region with any other region (near or far) will give us a relatively large difference.</p>
+
+      <p>If we repeat this process for different small shifts $(u,v)$ and find that we are always getting a large difference or error then we have found a good Keypoint.</p>
+
+      <p><em>[Image placeholder: Different shifts around keypoint]</em></p>
+
+      <p>Going back to the function we want to design, we want a function $E(u,v)$ that will tell us the difference between a window centered at a particular point $\underline{P}$ and a window centered at a point shifted by $(u,v)$ from $\underline{P}$. Mathematically, this desired function is:</p>
+
+      <p>$$E(u,v) = \sum_{x,y} W(x,y) [I(x+u, y+v) - I(x, y)]^2$$</p>
+
+      <p>where</p>
+
+      <p>$$w(x,y) = \begin{cases} 1, & \text{if } (x,y) \in W \\ 0, & \text{Otherwise} \end{cases}$$</p>
+
+      <p>Our claim so far is as follows: If we find that the difference between a window centered at a particular point $\underline{P}$ and every other window centered at any point $\underline{P}'$ that is shifted by any small $(u,v)$ then we will consider P to be a Keypoint.</p>
+
+      <p>Let's look at some examples that back this claim.</p>
+
+      <p><em>[Image placeholder: Examples of corners vs edges vs flat regions]</em></p>
+
+      <h2>Approximation</h2>
+
+      <p>Now we know what we are looking for (points in our image where $E(u,v)$ is large for any small $(u,v)$ in the window around that point).</p>
+
+      <p>This is actually decently computationally intensive as for every candidate point $\underline{P}$ in our image we are computing $E(u,v)$ for over some range $(u,v) \in W$. The run-time for this process would be $O(KN)$ where $K = \text{(window width)} \times \text{(window height)}$ and $N$ is the number of pixels in the image. Additionally, at this point we will have only computed an $E(\cdot, \cdot)$ matrix for every candidate point $\underline{P}$ but will not have decided which points are good corners and which are not. This is the motivation for what follows.</p>
+
+      <p>Instead of actually computing $E(u,v) \quad \forall (u,v) \in W$ at every point or pixel location $\underline{P}$, we will approximate the function $E(u,v)$ by a second order taylor polynomial centered at that particular point.</p>
+
+      <p>If we do this we obtain:</p>
+
+      <p>$$E(u,v) \approx \begin{bmatrix} u & v \end{bmatrix} M \begin{bmatrix} u \\ v \end{bmatrix}$$</p>
+
+      <p>So we can compute $E(u,v)$ for any $(u,v)$ shift from a particular point $\underline{P}$. Furthermore, our error function looks like this:</p>
+
+      <p><em>[Image placeholder: 3D visualization of quadratic error function]</em></p>
+
+      <p>Now, previously we claimed that if $E(u,v)$ is large for all small $(u,v)$ then P is a corner. We are getting closer to an algorithm. Let's consider all $(u,v)$ shifts that give rise to some particular error, that is let's look at a slice of the error function of constant error $K$:</p>
+
+      <p>$$E(u,v) = k = \begin{bmatrix} u & v \end{bmatrix} M \begin{bmatrix} u \\ v \end{bmatrix}$$</p>
+
+      <p>we notice that is a quadratic form and in particular it is an equation of an ellipse. It can be shown that given an ellipse equation written in quadratic form, the major and minor axis lengths of an ellipse are given by:</p>
+
+      <p><em>[Image placeholder: Ellipse with axis lengths marked]</em></p>
+
+      <p>where $\lambda_1$ and $\lambda_2$ are the eigenvalues of matrix $M$. We will see why this is the case in just a bit. For now take it as a property of any ellipse equation.</p>
+
+      <p>We now notice that if we consider all shifts $(u,v)$ that cause the same error $K = E(u,v)$. A <strong>larger</strong> $(u,v)$ shift is needed if the eigenvalues of the matrix M are <strong>small</strong>, as the radius of the ellipse is <strong>large</strong>.</p>
+
+      <p><em>[Image placeholder: Comparison of ellipses with different eigenvalues]</em></p>
+
+      <p>More concretely, suppose we are comparing two candidate points $\underline{P_1}$ and $\underline{P_2}$ and find their corresponding error functions to be:</p>
+
+      <p>$$E_1(u,v) \approx \begin{bmatrix} u & v \end{bmatrix} M_1 \begin{bmatrix} u \\ v \end{bmatrix}$$</p>
+
+      <p>$$E_2(u,v) \approx \begin{bmatrix} u & v \end{bmatrix} M_2 \begin{bmatrix} u \\ v \end{bmatrix}$$</p>
+
+      <p>But we find that the eigenvalues of $M_1$ are larger than the eigenvalues of $M_2$ then we can say that $\underline{P_1}$ is a better keypoint because a <strong>smaller</strong> $(u,v)$ shift causes the <strong>same</strong> error as a <strong>larger</strong> $(u,v)$ shift does at $\underline{P_2}$.</p>
+
+      <h2>Principal Axes Theorem</h2>
+
+      <p>Let $Q$ be a quadratic form on $\mathbb{R}^{N}$ (i.e. $Q(\underline{x}) = \underline{x}^T A \underline{x}$) where $A \in \mathbb{R}^{N \times N}$ is a symmetric matrix. Then we can find an <strong>orthogonal</strong> matrix $P \in \mathbb{R}^{N \times N}$ such that $\underline{x}= P\underline{y}$, transforming $Q(\underline{x}) = \underline{x}^T A \underline{x}$ to $Q(\underline{x}) = \underline{y}^T D \underline{y}$ with no cross terms. ($D$ is a diagonal matrix)</p>
+
+      <p>So why are the radii of the ellipse given by the $r_i = \lambda_i^{1/2}$? This is kind of a long story. First we start with our original equation. Let $\underline{x} = \begin{bmatrix} x_1 & x_2 \end{bmatrix}^T$ and suppose we have the following ellipse equation.</p>
+
+      <p>$$K = \underline{x}^T M \underline{x} = a_1 u^2 + a_2 uv + a_3 v^2$$</p>
+
+      <p>we will need three facts to proceed:</p>
+
+      <ol>
+        <li><p><strong>Matrix $\mathbf{M}$ is symmetric</strong> and there is a theorem that states that we can always diagonalize a symmetric matrices - that is we can find a matrix $P$ such that $P^T M P = D$ where $D$ is a diagonal matrix and the columns of $P$ are the eigenvectors of $M$.</p></li>
+        
+        <li><p><strong>Change of basis</strong>: Another thing we'll need is to recall that any invertible matrix $\mathbf{P} \in \mathbb{R}^{N \times N}$ represents a change of basis from $\eta$-coordinates to $\beta$-coordinates:</p>
+        
+        <p>$$\underline{x} = P \underline{y} \quad \Longleftrightarrow \quad \underline{y} = P^{-1} \underline{x} \quad \Longleftrightarrow \quad [\underline{y}]_\beta = [\underline{x}]_\eta$$</p></li>
+        
+        <li><p><strong>Standard Ellipse equation</strong>: The equation of a Standard Ellipse gives an ellipse that is symmetric about the axes.</p>
+        
+        <p>$$\frac{x^2}{r_1^2} + \frac{y^2}{r_2^2} = k$$</p>
+        
+        <p>Or in vector form this is:</p>
+        
+        <p>$$\begin{bmatrix} x & y \end{bmatrix} \begin{bmatrix} 1/r_1^2 & 0 \\ 0 & 1/r_2^2 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = k$$</p>
+        
+        <p><em>[Image placeholder: Standard ellipse aligned with axes]</em></p>
+        
+        <p>Where the radii of this ellipse is then given by $r_1$ and $r_2$. We should note that the more General Equation of an Ellipse does not give us an ellipse symmetric about the axes due to the cross term $bxy$.</p>
+        
+        <p>$$ax^2 + bxy + cy^2 = k$$</p>
+        
+        <p><em>[Image placeholder: Rotated ellipse with cross terms]</em></p></li>
+      </ol>
+
+      <p>Now we can proceed as follows. Suppose we define a change of basis matrix $P$, and now $x$ can be given by:</p>
+
+      <p>$$\underline{x} = P \underline{y}$$</p>
+
+      <p>where $\underline{x}$ is in standard coordinates and $\underline{y}$ is in a different coordinate system where the columns of $P$ are the basis vectors of that coordinate system. We can then re-write our ellipse equation:</p>
+
+      <p>$$K = \underline{x}^T M \underline{x} = \underline{y}^T P^T A P \underline{y} = \underline{y}^T C \underline{y}$$</p>
+
+      <p>Now we observe two things. First that $K = \underline{y}^T C \underline{y}$ defines the exact same ellipse in space as $K = \underline{x}^T M \underline{x}$. The only difference is the set of all points that make up the ellipse are referenced from a different coordinate system (different basis). Second, $P$ can be any arbitrary change of basis matrix and nothing interesting would happen, we'd be left with this new equation for the same ellipse:</p>
+
+      <p>$$K = \underline{y}^T C \underline{y} = ay_1^2 + by_1y_2 + cy_2^2$$</p>
+
+      <p>However, if instead we choose a change of basis matrix $P$ whose columns are the eigenvectors of A then by <strong>Fact #2</strong> we see that $C = P^T A P = D$ is a <strong>diagonal</strong> matrix. Expanding this out we get:</p>
+
+      <p>$$K = \underline{y}^T D \underline{y} = \begin{bmatrix} y_1 & y_2 \end{bmatrix} \begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix} \begin{bmatrix} y_1 \\ y_2 \end{bmatrix} = \lambda_1y_1^2 + \lambda_2 y_2^2$$</p>
+
+      <p>So by changing our reference frame we've just eliminated our cross term! We can then use <strong>Fact #3</strong> and match coefficients. If we do this we find the following:</p>
+
+      <p>$$\frac{y_1^2}{r_1^2} + \frac{y_2^2}{r_2^2} = k = \lambda_1y_1^2 + \lambda_2 y_2^2$$</p>
+
+      <p>$$\therefore r_1 = \lambda_1^{-1/2} \text{ and } r_2 = \lambda_2^{-1/2}$$</p>
+
+      <h2>Algorithm</h2>
+
+      <p>By now we know that a particular pixel $\underline{P}$ is categorized as a Keypoint if when we compute an error function $E(u,v)$ and take any particular contour $E(u,v) = k$ we see a narrow ellipse. This corresponds to the fact that if we took a small window around that point and shifted it by a little bit then compared it to the original window we'd see a relatively large difference.</p>
+
+      <p>We have also seen that we can quantify the "narrow-ness" of a particular contour or ellipse of $E(u,v)$ by using the eigenvalues of the matrix $M$ in our quadratic form equation:</p>
+
+      <p>$$E(u,v) = \begin{bmatrix} u & v \end{bmatrix} M \begin{bmatrix} u \\ v \end{bmatrix}$$</p>
+
+      <p>So we want to find points in the image that give rise to a quadratic where the $M$ matrix has large eigenvalues. We also want the eigenvalues to be comparable in size. Why? Well if one of the eigenvalues is small this means that the ellipse we are looking at is narrow in one direction and long in the other and therefore our error $E(u,v)$ is high if we shift the window around our point in one direction but is low if we shift it in another direction. This means we are at a line.</p>
+
+      <p>In the original paper "A COMBINED CORNER AND EDGE DETECTOR" the author's proposed the following "corner-ness" score to find points with large eigenvalues that are close in magnitude:</p>
+
+      <p>$$R = \lambda_1 \lambda_2 - \alpha(\lambda_1 + \lambda_2)^2$$</p>
+
+      <p>To interpret this formulation, let's consider two cases. If $\lambda_2$ is large and $\lambda_1$ is small and $\lambda_2 = 10\lambda_1$ and we take $\alpha = 0.05$:</p>
+
+      <p>$$R = \lambda_1 (10\lambda_1) - \alpha(\lambda_1 + (10\lambda_1))^2 = 4\lambda_1^2$$</p>
+
+      <p>If both $\lambda_1$ and $\lambda_2$ are large and $\lambda_1 = \lambda_2 = \lambda$ then we have:</p>
+
+      <p>$$R = \lambda_1 (\lambda_1) - \alpha(\lambda_1 + (\lambda_1))^2 = 0.95\lambda^2$$</p>
+
+      <p>Comparing the above two results we get $4\lambda_1^2$ where $\lambda_1$ is assumed to be relatively small value in the first case and $0.95\lambda^2$ where $\lambda$ is assumed to be a relatively large value in the second case. Therefore the second case would get a higher "corner-ness" score.</p>
+
+      <h3>Harris Corner Detector Algorithm</h3>
+
+      <ol>
+        <li><p><strong>Compute M matrix for every pixel:</strong>
+        $$M = \sum \begin{bmatrix} I_x^2 & I_x I_y \\ I_x I_y & I_y^2 \end{bmatrix}$$</p></li>
+
+        <li><p><strong>Compute eigenvalues</strong> of every $M$ matrix</p></li>
+
+        <li><p><strong>Compute R</strong> for every pixel using eigenvalues of corresponding $M$ matrices</p></li>
+
+        <li><p><strong>Threshold based on R-score</strong> accordingly</p></li>
+
+        <li><p><strong>Return</strong> top X corners</p></li>
+      </ol>
+
+      <h3>Find Fundamental Matrix Algorithm</h3>
+
+      <p><strong>Input:</strong> $I_l, I_r$ (left and right images)</p>
+
+      <ol>
+        <li><p><strong>Run RANSAC</strong> for some number of iterations:</p>
+        <ul>
+          <li>Select k matches from top A matches randomly</li>
+          <li>Compute Fundamental matrix by solving least squares problem: $\min \|M \mathbf{f}\|_2^2$</li>
+          <li>Store F matrix and error y</li>
+        </ul></li>
+
+        <li><p><strong>Select best solution:</strong> $\text{bestF} = \arg\min_y \text{Fmatrix}[F, y]$</p></li>
+
+        <li><p><strong>Return</strong> bestF</p></li>
+      </ol>
+
+      <hr>
+
+      <p><em>This blog post explains the mathematical foundation behind the Harris Corner Detector, a fundamental algorithm in computer vision for detecting corner features in images.</em></p>
     </div>
   </main>
   
@@ -508,157 +675,13 @@
       });
     }
     
-    // Extract blog post name from URL parameter
-    function getPostName() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('post');
-    }
-    
-    // Extract frontmatter from markdown content
-    function extractFrontmatter(content) {
-      const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-      const match = content.match(frontmatterRegex);
-      
-      if (match) {
-        const frontmatter = {};
-        const frontmatterLines = match[1].split('\n');
-        frontmatterLines.forEach(line => {
-          const colonIndex = line.indexOf(':');
-          if (colonIndex > -1) {
-            const key = line.substring(0, colonIndex).trim();
-            let value = line.substring(colonIndex + 1).trim();
-            
-            // Handle quoted strings
-            if ((value.startsWith('"') && value.endsWith('"')) || 
-                (value.startsWith("'") && value.endsWith("'"))) {
-              value = value.slice(1, -1);
-            }
-            
-            // Handle arrays (tags)
-            if (value.startsWith('[') && value.endsWith(']')) {
-              try {
-                value = JSON.parse(value);
-              } catch (e) {
-                // If JSON parsing fails, treat as string
-              }
-            }
-            
-            frontmatter[key] = value;
-          }
-        });
-        return {
-          frontmatter,
-          content: match[2]
-        };
-      }
-      
-      // Fallback: try to extract title and date from first lines
-      const lines = content.split('\n');
-      let title = '';
-      let date = '';
-      let contentStart = 0;
-      
-      for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (line.startsWith('# ') && !title) {
-          title = line.substring(2);
-          contentStart = i + 1;
-        } else if (line.startsWith('*') && line.endsWith('*') && !date) {
-          date = line.replace(/^\*|\*$/g, '');
-          contentStart = Math.max(contentStart, i + 1);
-        } else if (title && date) {
-          break;
-        }
-      }
-      
-      return {
-        frontmatter: { title, date },
-        content: lines.slice(contentStart).join('\n')
-      };
-    }
-    
-    // Load and render blog post
-    async function loadBlogPost() {
-      const postName = getPostName();
-      
-      if (!postName) {
-        document.getElementById('blog-content').innerHTML = `
-          <div class="error">
-            <h2>Blog post not found</h2>
-            <p>No blog post specified in the URL.</p>
-          </div>
-        `;
-        return;
-      }
-      
-      try {
-        const response = await fetch(`blogs/${postName}.md`);
-        
-        if (!response.ok) {
-          throw new Error(`Blog post "${postName}" not found`);
-        }
-        
-        const markdown = await response.text();
-        const { frontmatter, content } = extractFrontmatter(markdown);
-        
-        // Update page title and meta tags
-        const title = frontmatter.title || 'Blog Post';
-        const date = frontmatter.date || '';
-        
-        document.getElementById('page-title').textContent = `${title} - Marawan Gamal`;
-        document.getElementById('og-title').content = title;
-        document.getElementById('twitter-title').content = `${title} - Marawan Gamal`;
-        
-        // Generate excerpt for meta description
-        const plainText = content.replace(/[#*`\[\]()]/g, '').substring(0, 160);
-        document.getElementById('page-description').content = plainText;
-        document.getElementById('meta-description').content = plainText;
-        document.getElementById('twitter-description').content = plainText;
-        
-        // Configure marked.js options
-        marked.setOptions({
-          breaks: true,
-          gfm: true
-        });
-        
-        // Convert markdown to HTML
-        const htmlContent = marked.parse(content);
-        
-        // Create the blog post HTML
-        const blogHTML = `
-          <div class="blog-header">
-            <h1 class="blog-title">${title}</h1>
-            <div class="blog-meta">
-              ${date ? `<div class="blog-date">${date}</div>` : ''}
-            </div>
-          </div>
-          <div class="blog-content">
-            ${htmlContent}
-          </div>
-        `;
-        
-        document.getElementById('blog-content').innerHTML = blogHTML;
-        
-        // Re-render MathJax
-        if (window.MathJax) {
-          MathJax.typesetPromise();
-        }
-        
-      } catch (error) {
-        console.error('Error loading blog post:', error);
-        document.getElementById('blog-content').innerHTML = `
-          <div class="error">
-            <h2>Error loading blog post</h2>
-            <p>${error.message}</p>
-          </div>
-        `;
-      }
-    }
-    
     // Initialize on page load
     window.addEventListener('load', () => {
       toggleMobileMenu();
-      loadBlogPost();
+      // Re-render MathJax if available
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
     });
   </script>
 
