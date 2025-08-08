@@ -367,8 +367,13 @@
       const closeBtn = document.getElementById('mobileMenuClose');
       
       menuBtn.addEventListener('click', () => {
-        menu.classList.add('active');
-        menuBtn.classList.add('active');
+        if (menu.classList.contains('active')) {
+          menu.classList.remove('active');
+          menuBtn.classList.remove('active');
+        } else {
+          menu.classList.add('active');
+          menuBtn.classList.add('active');
+        }
       });
       
       closeBtn.addEventListener('click', () => {
